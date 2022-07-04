@@ -13,6 +13,5 @@ const Wrapper = styled.div`
   color: orange;
   width: 100vw;
   height: 100vh;
-  /* background: #eee; */
 `;
 export default Pages;
