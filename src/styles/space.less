@@ -1,0 +1,53 @@
+// 间距css生成
+@space-type: {
+    m: margin;
+    p: padding;
+}
+
+;
+
+@spaces: {
+    4: 4px;
+    8: 8px;
+    12: 12px;
+    16: 16px;
+    24: 24px;
+    38: 38px;
+}
+
+;
+
+@position : {
+    t: top;
+    b: bottom;
+    l: left;
+    r: right;
+
+
+}
+
+;
+
+
+// https://lesscss.org/functions/ 搜索 Setting variable names 
+// 同理可生成各种工具类
+each(@space-type, .(@type, @typeKey) {
+
+
+        each(@spaces, .(@value, @key, @index) {
+                .@{typeKey}-@{key} {
+
+                    @{type}:@value;
+                }
+
+                each(@position, .(@posValue, @posKey) {
+                        .@{typeKey}@{posKey}-@{key} {
+
+                            @{type}-@{posValue}:@value;
+                        }
+
+                    });
+            });
+
+
+    });
