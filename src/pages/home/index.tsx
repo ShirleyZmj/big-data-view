@@ -1,3 +1,4 @@
+import FlopNum from "@/components/FlopNum";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -21,11 +22,20 @@ const Home = () => {
     });
   }, []);
 
+  const [data, setData] = useState(0);
+  const changeData = () => {
+    setData(Math.floor(Math.random() * 10000000000));
+  };
+
   return (
     <Wrapper>
-      <Header></Header>
+      <Header>
+        <button onClick={changeData}>Change Data</button>
+      </Header>
       {loading && <Loading>Loading...</Loading>}
-      <NumBar></NumBar>
+      <NumBar>
+        <FlopNum value={data} />
+      </NumBar>
 
       <Content>
         <GridItem name="lt">left top</GridItem>
@@ -43,6 +53,7 @@ const Home = () => {
 const NumBar = styled.div`
   outline: 1px solid;
   height: 60px;
+  padding: 0 20%;
 `;
 
 const Loading = styled.div`
