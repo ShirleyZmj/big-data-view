@@ -1,4 +1,5 @@
 import FlopNum from "@/components/FlopNum";
+import TLComponent from "@/components/TLComponent";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -22,9 +23,13 @@ const Home = () => {
     });
   }, []);
 
-  const [data, setData] = useState(0);
+  const getRandom = () => {
+    return Math.floor(Math.random() * 10000000000);
+  };
+  const [data, setData] = useState(getRandom());
+
   const changeData = () => {
-    setData(Math.floor(Math.random() * 10000000000));
+    setData(getRandom());
   };
 
   return (
@@ -39,7 +44,10 @@ const Home = () => {
 
       <Content>
         <GridItem name="lt">left top</GridItem>
-        <GridItem name="lb">left bottom</GridItem>
+        <GridItem name="lb">
+          <TLComponent />
+          {/* left bottom */}
+        </GridItem>
         <GridItem name="c">center</GridItem>
         <GridItem name="rt">right top</GridItem>
         <GridItem name="rc">right center</GridItem>
@@ -90,15 +98,15 @@ const Content = styled.div`
     "lb c rb"
     "lb c rb";
   grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(6, 1fr);
   grid-gap: 24px;
   padding: 20px;
-  /* grid-template-columns: 300fr 400fr 300fr;
-  grid-template-rows: 50px 1fr 1fr; */
 `;
 
 const GridItem = styled.div<{ name: string }>`
   grid-area: ${(props) => props.name};
   outline: 1px solid gray;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
