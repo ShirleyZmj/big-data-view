@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import ScaleContainer from "../ScaleContainer";
 
-const TLComponent = () => {
+const BottomLeftPart = () => {
   const [disabled, setDisabled] = useState(true);
   return (
     <ScaleContainer height={400} width={600} disabled={disabled}>
@@ -44,4 +44,4 @@ const Wrapper = styled.div`
   grid-template-rows: repeat(2, 1fr);
 `;
 
-export default TLComponent;
+export default BottomLeftPart;

@@ -1,7 +1,8 @@
 import FlopNum from "@/components/FlopNum";
-import TLComponent from "@/components/TLComponent";
+import BottomLeftPart from "@/components/BottomLeftPart";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import TopLeftPart from "@/components/TopLeftPart";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -43,9 +44,12 @@ const Home = () => {
       </NumBar>
 
       <Content>
-        <GridItem name="lt">left top</GridItem>
+        <GridItem name="lt">
+          <TopLeftPart />
+          {/* left top */}
+        </GridItem>
         <GridItem name="lb">
-          <TLComponent />
+          <BottomLeftPart />
           {/* left bottom */}
         </GridItem>
         <GridItem name="c">center</GridItem>

@@ -9,6 +9,16 @@ const config = {
       "@": resolve("src"),
       "@components": resolve("src/components"),
     },
+    devServer: {
+      proxy: {
+        "/v1/": {
+          target: "http://localhost:3001",
+
+          changeOrigin: true,
+          pathRewrite: { "^": "" },
+        },
+      },
+    },
     // extensions: ["", ".js", ".jsx", ".ts", ".tsx"],
   },
 };
