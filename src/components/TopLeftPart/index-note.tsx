@@ -226,10 +226,12 @@ const RollCardItemStyle = styled.div<{ height: number }>`
   padding-top: ${(props) => props.height / 2 + "px"};
   overflow: hidden;
 `;
+
 const RollCardItemWrap = styled.div<{ height: number; totalHeight: number }>`
   height: ${(props) => props.totalHeight + "px"};
   position: relative;
 `;
+
 const RollCardItem = styled.div<{ height: number; index: number }>`
   height: ${(props) => props.height + "px"};
   line-height: ${(props) => props.height + "px"};
