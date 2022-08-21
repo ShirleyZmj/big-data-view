@@ -3,10 +3,11 @@ import BottomLeftPart from "@/components/BottomLeftPart";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import TopLeftPart from "@/components/TopLeftPart";
+import { CountTo, useCountTo } from "@/components/CountTo";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-
+  const { countToAction } = useCountTo();
   useEffect(() => {
     const imgs = document.querySelectorAll("img");
     if (!imgs) {
@@ -23,6 +24,15 @@ const Home = () => {
       });
     });
   }, []);
+
+  const [count, setCount] = useState(100);
+  const handleClick = () => {
+    const alter = Math.ceil(Math.random() * 100);
+    setCount(count + alter);
+
+    // const oldValue = countToAction.current?.getValue() || 0;
+    // countToAction.current?.setValue(oldValue + alter);
+  };
 
   const getRandom = () => {
     return Math.floor(Math.random() * 10000000000);
@@ -45,15 +55,19 @@ const Home = () => {
 
       <Content>
         <GridItem name="lt">
-          <TopLeftPart />
+          {/* <TopLeftPart /> */}
           {/* left top */}
+          scroll list
         </GridItem>
         <GridItem name="lb">
           <BottomLeftPart />
           {/* left bottom */}
         </GridItem>
         <GridItem name="c">center</GridItem>
-        <GridItem name="rt">right top</GridItem>
+        <GridItem name="rt">
+          <CountTo value={count} ref={countToAction} />
+          <button onClick={handleClick}>Change</button>
+        </GridItem>
         <GridItem name="rc">right center</GridItem>
         <GridItem name="rb">right bottom</GridItem>
       </Content>
